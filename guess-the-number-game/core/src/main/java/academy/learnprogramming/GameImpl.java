@@ -9,18 +9,15 @@ import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 
 // Remove because it is found automatically
-// @Component
+@Component
 public class GameImpl implements Game {
     // Constants
     private static final Logger log = LoggerFactory.getLogger(GameImpl.class);
 
     // Create fields
-    @Autowired
-    private NumberGenerator numberGenerator;
+    private final NumberGenerator numberGenerator;
 
-    @Autowired
-    @GuessCount
-    private int guessCount;
+    private final int guessCount;
 
     private int number;
     private int guess;
@@ -28,6 +25,13 @@ public class GameImpl implements Game {
     private int biggest;
     private int remainingGuesses;
     private boolean validNumberRange = true;
+
+    // Constructors
+    @Autowired
+    public GameImpl(NumberGenerator numberGenerator, @GuessCount int guessCount) {
+        this.numberGenerator = numberGenerator;
+        this.guessCount = guessCount;
+    }
 
     // Init Auto-Called
     @PostConstruct
