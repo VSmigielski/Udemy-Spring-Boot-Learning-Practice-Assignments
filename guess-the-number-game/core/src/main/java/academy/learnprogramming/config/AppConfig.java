@@ -18,10 +18,10 @@ import org.springframework.context.annotation.Import;
 @ComponentScan(basePackages = "academy.learnprogramming")
 public class AppConfig {
     // Bean Methods
-    @Bean
-    public NumberGenerator numberGenerator() {
-        return new NumberGeneratorImpl();
-    }
+    // @Bean
+    // public NumberGenerator numberGenerator() {
+    //    return new NumberGeneratorImpl();
+    // }
 
     @Bean
     public Game game() {

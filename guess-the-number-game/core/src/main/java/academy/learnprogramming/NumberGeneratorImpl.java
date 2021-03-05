@@ -8,17 +8,23 @@ import java.util.Random;
 // when you want to name a bean, you put it in parentheses&use quotes
 // Removing the annotation because they will be found automatically
 // @Component("generator")
+@Component
 public class NumberGeneratorImpl implements NumberGenerator {
     // Fields
     private final Random random = new Random();
 
-    @Autowired
-    @MaxNumber
-    private int maxNumber;
+    private final int maxNumber;
 
+    private final int minNumber;
+
+    // Constructors
+    // Constructor is annotated
     @Autowired
-    @MinNumber
-    private int minNumber;
+    // Within the parameters, annotate the qualifiers
+    public NumberGeneratorImpl(@MaxNumber int maxNumber, @MinNumber int minNumber) {
+        this.maxNumber = maxNumber;
+        this.minNumber = minNumber;
+    }
 
     // Public methods
     @Override

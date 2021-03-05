@@ -5,10 +5,13 @@ import academy.learnprogramming.MaxNumber;
 import academy.learnprogramming.MinNumber;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 
 @Configuration
+// Configures component scanning, best practice to annotate the basePackages
+@ComponentScan(basePackages = "academy.learnprogramming")
 @PropertySource("classpath:config/game.properties")
 public class GameConfig {
     // Fields
