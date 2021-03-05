@@ -3,10 +3,13 @@ package academy.learnprogramming;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 
+// Remove because it is found automatically
+// @Component
 public class GameImpl implements Game {
     // Constants
     private static final Logger log = LoggerFactory.getLogger(GameImpl.class);

@@ -1,5 +1,6 @@
 package academy.learnprogramming;
 
+// No annotation so that it's not coupled with Spring dependence
 public interface Game {
     int getNumber();
 
