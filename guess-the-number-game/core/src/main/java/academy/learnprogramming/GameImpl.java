@@ -1,7 +1,9 @@
 package academy.learnprogramming;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -10,16 +12,20 @@ import javax.annotation.PreDestroy;
 
 // Remove because it is found automatically
 @Component
+@Getter
+@Slf4j
 public class GameImpl implements Game {
-    // Constants
-    private static final Logger log = LoggerFactory.getLogger(GameImpl.class);
 
     // Create fields
+    // Makes a getter but does not affect it
+    @Getter(AccessLevel.NONE)
     private final NumberGenerator numberGenerator;
 
     private final int guessCount;
 
     private int number;
+    // Only the guess field is affected
+    @Setter
     private int guess;
     private int smallest;
     private int biggest;
@@ -70,41 +76,6 @@ public class GameImpl implements Game {
     // }
 
     @Override
-    public int getNumber() {
-        return number;
-    }
-
-    @Override
-    public int getGuess() {
-        return guess;
-    }
-
-    @Override
-    public void setGuess(int guess) {
-        this.guess = guess;
-    }
-
-    @Override
-    public int getSmallest() {
-        return smallest;
-    }
-
-    @Override
-    public int getBiggest() {
-        return biggest;
-    }
-
-    @Override
-    public int getRemainingGuesses() {
-        return remainingGuesses;
-    }
-
-    @Override
-    public int getGuessCount() {
-        return guessCount;
-    }
-
-    @Override
     public void check() {
         // Check range
         checkValidNumberRange();
@@ -119,11 +90,6 @@ public class GameImpl implements Game {
         }
         // Deaccumulate guess amount
         remainingGuesses--;
-    }
-
-    @Override
-    public boolean isValidNumberRange() {
-        return validNumberRange;
     }
 
     @Override
